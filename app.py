@@ -50,6 +50,23 @@ def listar_restaurantes():
     print(f'-> {nome_restaurante.ljust(20)} | Categoria: {categoria_restaurante.ljust(20)} | Status: {status_restaurante}')
   voltar_ao_menu()
 
+def modificar_status_restaurante():
+  exibir_titulo_da_opcao('Modificar Status de um Restaurante')
+  nome_restaurante = input('Digite o nome do restaurante que deseja modificar o status: ')
+  resturante_encontrado = False
+  
+  for restaurante in restaurantes:
+    if nome_restaurante == restaurante['nome']:
+      resturante_encontrado = True
+      restaurante['status'] = not restaurante['status']
+      mensagem = f'{nome_restaurante} ativado com sucesso' if restaurante['status'] else f'{nome_restaurante} desativado com sucesso'
+      print(mensagem)
+
+  if not resturante_encontrado:
+    print(f'O Restaurante {nome_restaurante} não foi encontrado')
+  
+  voltar_ao_menu()
+
 def selecionar_opcao():
   try:
     opcao_escolhida = int(input('Digite a opção desejada: ')) 
@@ -59,7 +76,7 @@ def selecionar_opcao():
           case 2:
             listar_restaurantes()
           case 3: 
-            print('Ativar Restaurante')
+            modificar_status_restaurante()
           case 0:
             fechar_aplicacao()
           case _:
