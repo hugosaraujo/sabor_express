@@ -1,8 +1,15 @@
 import os
 
-restaurantes = [{'nome': 'Sabor & Sabor', 'categoria': 'mineira', 'status': True},
-                {'nome': 'Salada no pote!', 'categoria': 'fitness', 'status': False},
-                {'nome': 'Apetit Natural', 'categoria': 'vegano', 'status': False}]
+restaurantes = [
+  {'nome': 'Sabor & Sabor', 
+   'categoria': 'mineira', 
+   'status': True},
+  {'nome': 'Salada no pote!', 
+   'categoria': 'fitness', 
+   'status': False},
+  {'nome': 'Apetit Natural', 
+   'categoria': 'vegano', 
+   'status': False}]
 
 def exibir_banner():
   print('''
