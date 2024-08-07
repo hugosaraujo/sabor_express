@@ -1,6 +1,8 @@
 import os
 
-restaurantes = ['Sabor & Sabor', 'Salada no pote!']
+restaurantes = [{'nome': 'Sabor & Sabor', 'categoria': 'mineira', 'status': True},
+                {'nome': 'Salada no pote!', 'categoria': 'fitness', 'status': False},
+                {'nome': 'Apetit Natural', 'categoria': 'vegano', 'status': False}]
 
 def exibir_banner():
   print('''
@@ -21,7 +23,7 @@ def voltar_ao_menu():
 def exibir_opcoes_de_menu():
   print('1 - Cadastrar Restaurante')
   print('2 - Listar Restaurantes')
-  print('3 - Ativar Restaurante')
+  print('3 - Ativar Status Restaurante')
   print('0 - Sair\n')
   
 def fechar_aplicacao():
@@ -32,15 +34,20 @@ def opcao_invalida():
 
 def adicionar_restaurante():
   exibir_titulo_da_opcao('Adicionar Restaurante')
-  nome_do_restaurante = input('Digite o nome do restaurante: ')
-  restaurantes.append(nome_do_restaurante)
+  nome_restaurante = input('Digite o nome do restaurante: ')
+  categoria_restaurante = input(f'Digite a categoria do restaurante {nome_restaurante}: ')
+  dados_restaurante = {'nome': nome_restaurante, 'categoria': categoria_restaurante, 'status': True}
+  restaurantes.append(dados_restaurante)
   print('Restaurante cadastrado com sucesso!')
   voltar_ao_menu()
 
 def listar_restaurantes():
   exibir_titulo_da_opcao('Opções de restaurantes')
   for restaurante in restaurantes:
-    print(f'-> {restaurante}')
+    nome_restaurante = restaurante['nome']
+    categoria_restaurante = restaurante['categoria']
+    status_restaurante = 'Ativo' if restaurante['status'] else 'Inativo'
+    print(f'-> {nome_restaurante.ljust(20)} | Categoria: {categoria_restaurante.ljust(20)} | Status: {status_restaurante}')
   voltar_ao_menu()
 
 def selecionar_opcao():
