@@ -13,7 +13,10 @@ def exibir_banner():
 
 def exibir_titulo_da_opcao(texto):
   os.system('clear')
-  print(texto)
+  linha_de_asteriscos = '*' * (len(texto) + 4 ) 
+  print(f'{linha_de_asteriscos}')
+  print(f'* {texto} *')
+  print(f'{linha_de_asteriscos}\n')
 
 def voltar_ao_menu():
   input('Pressione ENTER para voltar ao menu...')
@@ -43,6 +46,7 @@ def adicionar_restaurante():
 
 def listar_restaurantes():
   exibir_titulo_da_opcao('Opções de restaurantes')
+  print('  Nome'.ljust(24), 'Categoria'.ljust(33), 'Status', sep = '|')
   for restaurante in restaurantes:
     nome_restaurante = restaurante['nome']
     categoria_restaurante = restaurante['categoria']
